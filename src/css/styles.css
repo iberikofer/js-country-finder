@@ -10,7 +10,7 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(90deg, #ffff00, #0000ff);
+  background: linear-gradient(90deg, #5fc3e4, #e55d87);
   color: #212121;
   line-height: 1.5;
   text-align: center;
@@ -19,7 +19,7 @@ body {
 .main_title {
   text-align: center;
   font-size: 48px;
-  padding: 25px 0px;
+  padding: 40px 0px;
   color: aliceblue;
 }
 
@@ -30,10 +30,6 @@ body {
   font-weight: 900;
   margin: 16px auto;
   border: 5px outset red;
-}
-
-#search-box:focus {
-  outline: none;
 }
 
 .listItem {
