@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 body {
@@ -7,14 +10,32 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  background: linear-gradient(90deg, #ffff00, #0000ff);
   color: #212121;
   line-height: 1.5;
+  text-align: center;
+}
+
+.main_title {
+  text-align: center;
+  font-size: 48px;
+  padding: 25px 0px;
+  color: aliceblue;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
-  margin-bottom: 16px;
+  font-weight: 900;
+  margin: 16px auto;
+  border: 5px outset red;
+}
+
+#search-box:focus {
+  outline: none;
+}
+
+.listItem {
+  display: flex;
 }
