@@ -8,7 +8,7 @@ const input = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 
-function clearMarkup() {
+export default function clearMarkup() {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
@@ -21,59 +21,60 @@ function onInput(event) {
     clearMarkup();
     return;
   }
-  fetchCountries(countryToFind)
-    .then(checkResponse)
-    .then(checkCountriesNumber)
-    .catch(onError);
-
-  function checkResponse(response) {
-    clearMarkup();
-    if (!response.ok) {
-      return console.error('Response is NOT OK!');
-    }
-    console.log(response.json()); // DELETE WHEN DONE
-    return response.json();
-  }
+  fetchCountries(countryToFind).then(checkCountriesNumber).catch(onError);
 }
 
 // CHECKS
 function checkCountriesNumber(data) {
-  console.log(YYYYYYYYYYYYYYYYYYEEEEEEEEEEEEEEEEEEESSSSSSSSSSSSSSSS);
   if (data.length > 10) {
-    Notiflix.Notify.info(
+    return Notiflix.Notify.info(
       'Too many matches found. Please enter a more specific name.🤔'
     );
-    return;
   } else if (data.length >= 2) {
     const markup = data
       .map(element => {
-        return buildListMarkup(element.name, element.flag);
+        return buildCoutryListMarkup(element.name.official, element.flags.svg);
       })
       .join('');
-    return (countryList.innerHTML = markup);
+    countryList.innerHTML = markup;
+    return;
   }
+
+  const markup = buildCountryMarkup(data[0]);
+  countryInfo.innerHTML = markup;
 }
 
 function onError() {
-  Notiflix.Notify.info('Oops, there is no country with that name 😞');
+  Notiflix.Notify.failure('Oops, there is no country with that name 😞');
 }
 
 // BUILD COUNTRY LIST MARKUP
 function buildCoutryListMarkup(name, flag) {
   return `
 	<li class="listItem">
-	<img src="${flag}" alt="flag of ${name}" class="flag" />
+	<img src="${flag}" alt="flag of ${name}" width="35px" height="35px"/>
 	<p class="country-name">${name}</p>
 	</li>
 	`;
 }
 
 // BUILD ONE COUNTRY MARKUP
-function buildCountryMarkup(name, flag) {
-  return `
-	<li class="listItem">
-	<img src="${flag.svg}" alt="$flag of ${name.official}" class="flag" />
-	<p class="country-name">${name.official}</p>
-	</li>
-	`;
+function buildCountryMarkup({ name, flags, capital, population, languages }) {
+  const languageBlock = Object.values(languages).join(', ');
+
+  return (markup = `
+	<div class="one-country-header">
+		<img src="${flags.svg}" alt="$flag of ${
+    name.official
+  }" class="one-country-flag""/>
+		<h2 class="one-country-name">${name.official}</h2>
+	</div>
+	<ul class="one-country-info-list">
+		<li class="one-country-info-list-item"><h3>Capital:</h3> <span>${
+      capital[0]
+    }</span></li>
+		<li class="one-country-info-list-item"><h3>Population:</h3> <span>${population.toLocaleString()}</span></li>
+		<li class="one-country-info-list-item"><h3>Languages:</h3> <span>${languageBlock}</span></li>
+	</ul>
+	`);
 }

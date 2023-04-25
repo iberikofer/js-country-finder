@@ -10,8 +10,11 @@ body {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(90deg, #5fc3e4, #e55d87);
-  color: #212121;
+  background: url(https://www.5.ua/media/pictures/original/136190.jpg?t=1524499649)
+    no-repeat;
+  background-size: cover;
+  color: #fafafa;
+  font-weight: 700;
   line-height: 1.5;
   text-align: center;
 }
@@ -28,10 +31,58 @@ body {
   padding: 8px;
   max-width: 320px;
   font-weight: 900;
-  margin: 16px auto;
   border: 5px outset red;
+}
+
+.country-list {
+  width: 80%;
+  margin: 0 auto;
 }
 
 .listItem {
   display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.country-name {
+  margin-left: 20px;
+}
+
+.country-info {
+  margin-top: 50px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.one-country-header {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 10px 0px;
+}
+
+.one-country-flag {
+  width: 50px;
+  height: 50px;
+  margin: 0px 10px;
+}
+
+.one-country-name {
+  font-size: 50;
+}
+
+.one-country-info-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.one-country-info-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+h3 {
+  margin-right: 10px;
 }
