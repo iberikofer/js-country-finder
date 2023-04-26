@@ -61,7 +61,6 @@ function buildCoutryListMarkup(name, flag) {
 // BUILD ONE COUNTRY MARKUP
 function buildCountryMarkup({ name, flags, capital, population, languages }) {
   const languageBlock = Object.values(languages).join(', ');
-  console.log('logloglogloglogloglogloglogloglog');
   const markup = `
 	<div class="one-country-header">
 		<img src="${flags.svg}" alt="$flag of ${
