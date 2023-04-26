@@ -16,7 +16,7 @@ export default function clearMarkup() {
 input.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(event) {
-  const countryToFind = event.target.value.trim();
+  const countryToFind = event.target.value.trim().toLowerCase();
   if (!countryToFind) {
     clearMarkup();
     return;
