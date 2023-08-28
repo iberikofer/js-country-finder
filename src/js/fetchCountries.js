@@ -1,4 +1,4 @@
-import clearMarkup from './index.js';
+import clearMarkup from '../index.js';
 
 const fetchOptions = 'name,capital,population,flags,languages';
 export function fetchCountries(name) {
